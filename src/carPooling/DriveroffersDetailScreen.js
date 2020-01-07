@@ -105,9 +105,18 @@ export default class DriveroffersDetailScreen extends Component {
     } = this.state;
     let params = this.props.navigation.state.params;
     let item = params.item;
-    let driver_id = await AsyncStorage.getItem('driver_id')
     const user = userManager.getUser() || {};
     if (_.isEmpty(user)) return;
+    if (
+      _.isEmpty(params.deliveryFrom) ||
+      _.isEmpty(params.deliveryTo) ||
+      _.isEmpty(params.deliveryTime) ||
+      _.isEmpty(params.number_people) ||
+      _.isEmpty(params.radius)
+    ) {
+      Alert.alert(__APP_NAME__, 'All driver info must be not empty');
+      return;
+    }
     if (
       _.isEmpty(car) ||
       _.isEmpty(color) ||
@@ -117,31 +126,80 @@ export default class DriveroffersDetailScreen extends Component {
       Alert.alert(__APP_NAME__, 'All fields must be not empty');
       return;
     }
+    const currentPlace = params.deliveryFrom.split(',')[0].trim();
+    const currentStreet = params.deliveryFrom.split(',')[1].trim();
+    const currentCity = params.deliveryFrom.split(',')[2].trim();
+    const currentCountry = params.deliveryFrom.split(',')[3].trim();
 
+    const targetPlace = params.deliveryTo.split(',')[0].trim();
+    const targetStreet = params.deliveryTo.split(',')[1].trim();
+    const targetCity = params.deliveryTo.split(',')[2].trim();
+    const targetCountry = params.deliveryTo.split(',')[3].trim();
+    const goDate = params.deliveryTime.format('YYYY-MM-DD');
+    const goTime = params.deliveryTime.format('HH:mm:ss');
+    const number_people = params.number_people;
+    const radius = params.radius;
     const car_model = car;
     const car_color = color;
     const car_plate = plate;
     const price_offer = price;
+    console.log('passenger=====>', item.passenger_id)
+    const path = '/api/v1/driver';
     const data = {
+      user_id: user.user_id,
+      // current_place: "currentPlace",
+      // current_street: currentStreet,
+      // current_city: currentCity,
+      // current_country: currentCountry,
+      current_place: currentPlace,
+      current_street: currentStreet,
+      current_city: currentCity,
+      current_country: currentCountry,
+      go_time: goTime,
+      go_date: goDate,
+      // current_geo_long: deliveryFromCoords.lng,
+      // current_geo_lat: deliveryFromCoords.lat,
+      target_place: targetPlace,
+      target_street: targetStreet,
+      target_city: targetCity,
+      target_country: targetCountry,
+      // target_geo_long: deliveryToCoords.lng,
+      // target_geo_lat: deliveryToCoords.lat,
+      number_people: number_people,
+      radius: radius,
       car_model: car_model,
       car_color: car_color,
       car_plate: car_plate,
       price_offer: price_offer,
     };
-    
+   
     this.setState({loading: true});
-    const path = '/api/v1/driver/' + driver_id;
-    const {response, error} = await APIClient.getInstance().jsonPUT(
+    const {response, error} = await APIClient.getInstance().jsonPOST(
       path,
       data,
     );
-    if (response) {
-      const carpoolingInfo = await this._getCarpoolingInfo(item.passenger_id);
-      await this._updateCarpooling(driver_id, carpoolingInfo);     
-    } else {
-      Alert.alert(__APP_NAME__, 'Errors occured, create offer failed!');
+
+    if (response){
+      let {driver_id} = response
+      const path1 = '/api/v1/carpooling/search/passenger/' + item.passenger_id
+      const response1 = await APIClient.getInstance().jwtGET(path1);
+      if (response1){
+        const { carpooling_id } = response1.response
+        const path2 = '/api/v1/carpooling/' + carpooling_id
+        const data2 = {driver_id: driver_id}
+        const response2 = await APIClient.getInstance().jsonPUT(
+          path2,
+          data2,
+        );
+        console.log("response2=====>", response2)
+        if (response2.response){
+          this.setState({isoffer: true})
+        }
+        // this.setState({ orderDetail: {...response2, carpooling_id} })
+        Alert.alert(__APP_NAME__, 'Created successful')
+      }
     }
-    this.setState({loading: false});
+    
   };
 
   _getCarpoolingInfo = async passenger_id => {
@@ -247,7 +305,46 @@ export default class DriveroffersDetailScreen extends Component {
             </View>
           </View>
         </View>
-        <View style={styles.buyForm}>
+        {isoffer ? (
+          <View style={styles.buyForm}>
+            <View style={styles.orderInfo}>
+              <View style={styles.progress}>
+                <Text style={styles.progresstext}>In progress</Text>
+              </View>
+              <View style={styles.priceitem}>
+                <Text style={styles.price1}>Price:</Text>
+                <Text style={styles.price2}>5$</Text>
+              </View>
+              <View style={styles.buyBtnContainer}>
+                <View style={{width: 15}} />
+                <TouchableOpacity
+                  onPress={() => this.props.navigation.navigate('DriverWrite')}
+                  style={styles.commentBtn}>
+                  <View style={styles.rowIcon}>
+                    <Image
+                      source={require('../resources/images/driver/envelope.png')}
+                    />
+                  </View>
+                  <Text style={styles.button}>Write</Text>
+                </TouchableOpacity>
+                <View style={{width: 15}} />
+                <TouchableOpacity style={styles.commentBtn}>
+                  <View style={styles.rowIcon}>
+                    <Image
+                      source={require('../resources/images/driver/phone.png')}
+                    />
+                  </View>
+                  <Text style={styles.button}>Call</Text>
+                </TouchableOpacity>
+              </View>
+              <GradientButton
+                label="Finish"
+                // _onPress={this._startMakingOrder}
+              />
+            </View>
+          </View>) 
+        :
+        (<View style={styles.buyForm}>
           <FormInput
             label="Car"
             placeholder="Enter your car name..."
@@ -276,7 +373,8 @@ export default class DriveroffersDetailScreen extends Component {
             label="Offer"
             _onPress={this._startMakingOrder}
           />
-        </View>
+        </View>)
+      }
       </View>
     );
   }

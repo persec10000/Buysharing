@@ -414,7 +414,6 @@ export default class DriverScreen extends Component {
       suppliersNearby,
       tappedLocation
     } = this.state;
-    console.log("ordertaddddd====>",this.state.orderDetail)
     return (
       <View style={styles.container}>
       <MapScreen
@@ -427,7 +426,7 @@ export default class DriverScreen extends Component {
       <View style={styles.screenTitleContainer}>
         <Text style={styles.screenTitle}>Offers nearby</Text>
         <TouchableOpacity
-          onPress={() => this.props.navigation.navigate('Driverofferby')}
+          onPress={() => this.props.navigation.navigate('Driverofferby', {deliveryFrom: deliveryFrom, deliveryTo: deliveryTo, deliveryTime: deliveryTime, number_people: number_people, radius: radius})}
           style={styles.screenTitleBtn}>
           <Image
             source={require('../resources/images/buyer/caret-right.png')}

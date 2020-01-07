@@ -284,7 +284,8 @@ export default class DriveroffersNearbyScreen extends Component {
 
   _DriverDetail = (item) => {
     console.log("Button pressed=====",item)
-    this.props.navigation.navigate('DriverDetail', {item: item})
+    let params = this.props.navigation.state.params
+    this.props.navigation.navigate('DriverDetail', {item: item, deliveryFrom: params.deliveryFrom, deliveryTo: params.deliveryTo, deliveryTime: params.deliveryTime, number_people: params.number_people, radius: params.radius})
   }
 
   render() {

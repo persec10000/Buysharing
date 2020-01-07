@@ -136,7 +136,7 @@ export default class DriverSubScreen extends Component {
     );
     if (response) {
       Alert.alert(__APP_NAME__, 'Created successfully' )
-      
+      this.props.navigation.goback()
     //   const carpoolingInfo = await this._getCarpoolingInfo(item.passenger_id);
     //   await this._updateCarpooling(driver_id, carpoolingInfo);     
     // } else {
