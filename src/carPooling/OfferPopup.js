@@ -80,7 +80,7 @@ export default class OfferPopup extends Component {
     const {navigation} = this.props;
     return (
       <View style={styles.popupPurpose}>
-        {!hasOffered && !_.isEmpty(driverInOffering) ? (
+        {!hasOffered && _.isEmpty(driverInOffering) ? (
           <View
             style={{
               flex: 1,

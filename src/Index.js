@@ -44,6 +44,7 @@ import ShoppingListManager from './manager/ShoppingListManager';
 import OrdersNearbyScreen from './supplier/OrdersNearbyScreen';
 import BuyerOrderDetailScreen from './supplier/BuyerOrderDetailScreen';
 import AbsoluteLoadingScreen from './commons/AbsoluteLoadingScreen';
+import DriverSubScreen from './carPooling/DriverSubScreen';
 console.disableYellowBox = true;
 const userManager = UserManager.getInstance();
 const itemLibraryManager = ItemLibraryManager.getInstance();
@@ -156,6 +157,7 @@ const BuyerContainer = createAppContainer(BuyerNavigator);
 
 const DriverRouteConfigs = {
   Driver: DriverScreen,
+  DriverSub: DriverSubScreen,
   // DriverNearby: DriverNearbyScreen,
   Trip: TripScreen,
   DriverWrite: DriverWriteScreen,

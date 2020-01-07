@@ -79,6 +79,7 @@ export default class PassengerScreen extends Component {
       suppliersNearby: [],
       visibleShoppingList: false,
       number_people: '',
+      driver_id:'',
       radius: '',
     };
   }
@@ -128,7 +129,17 @@ export default class PassengerScreen extends Component {
   };
 
   componentDidMount = async () => {
-    this.props.navigation.setParams({_goBack: this._goBack});
+    // this.props.navigation.setParams({_goBack: this._goBack});
+        this.props.navigation.addListener('didFocus', ()=>{
+        let params = this.props.navigation.state.params
+        let driver_id = params.item.driver_id
+        console.log("params==>",driver_id)
+        if (!_.isEmpty(params.item)) {
+          console.log("I am here")
+          this.setState({visibleModalPickup: true})
+          this.setState({ driver_id: driver_id})
+        }
+      })
 
     const currentLocation = await LocationManager.getInstance().getCurrentLocation();
 
@@ -274,6 +285,91 @@ export default class PassengerScreen extends Component {
       deliveryFromCoords,
     });
   };
+
+  _makeorder = async () => {
+    const {
+      deliveryFrom,
+      deliveryFromCoords,
+      deliveryTo,
+      deliveryTime,
+      deliveryToCoords,
+      number_people,
+      radius,
+      driver_id,
+      orderDetail
+    } = this.state;
+    const user = userManager.getUser() || {};
+
+    if (_.isEmpty(user)) return;
+
+    if (
+      _.isEmpty(deliveryFrom) ||
+      _.isEmpty(deliveryTo) ||
+      _.isEmpty(deliveryTime) ||
+      _.isEmpty(number_people)
+    ) {
+      Alert.alert(__APP_NAME__, 'All fields must be not empty');
+      return;
+    }
+
+    const fromPlace = deliveryFrom.split(',')[0].trim();
+    const fromStreet = deliveryFrom.split(',')[1].trim();
+    const fromCity = deliveryFrom.split(',')[2].trim();
+    const fromCountry = deliveryFrom.split(',')[3].trim();
+
+    const toPlace = deliveryTo.split(',')[0].trim();
+    const toStreet = deliveryTo.split(',')[1].trim();
+    const toCity = deliveryTo.split(',')[2].trim();
+    const toCountry = deliveryTo.split(',')[3].trim();
+    const goDate = deliveryTime.format('YYYY-MM-DD');
+    const goTime = deliveryTime.format('HH:mm:ss');
+    console.log('goDate', deliveryTime.format('YYYY-MM-DD'))
+    const path = '/api/v1/passenger';
+    const data = {
+      user_id: user.user_id,
+      // current_place: "currentPlace",
+      // current_street: currentStreet,
+      // current_city: currentCity,
+      // current_country: currentCountry,
+      from_place: fromPlace,
+      from_street: fromStreet,
+      from_city: fromCity,
+      from_country: fromCountry,
+      go_time: goTime,
+      go_date: goDate,
+      current_geo_long: deliveryFromCoords.lng,
+      current_geo_lat: deliveryFromCoords.lat,
+      to_place: toPlace,
+      to_street: toStreet,
+      to_city: toCity,
+      to_country: toCountry,
+      to_geo_long: deliveryToCoords.lng,
+      to_geo_lat: deliveryToCoords.lat,
+      number_people: number_people,
+      radius: radius,
+    };
+    const {response, error} = await APIClient.getInstance().jsonPOST(
+      path,
+      data,
+    );
+    if(response){
+      const path = '/api/v1/carpooling/search/driver/' + driver_id
+      const response1 = await APIClient.getInstance().jwtGET(path);
+      if (response1){
+        const { carpooling_id } = response1.response
+        const path = '/api/v1/carpooling/' + carpooling_id
+        const data = {passenger_id: response.passenger_id}
+        const {response2, error} = await APIClient.getInstance().jsonPUT(
+          path,
+          data,
+        );
+        // console.log("response",response2.response)
+        this.setState({visibleModalPickup: false})
+        // this.setState({ orderDetail: {...response2, carpooling_id} })
+        Alert.alert(__APP_NAME__, 'Created successful')
+      }
+    }
+  }
 
   _startMakingOrder = async () => {
     const {
@@ -453,7 +549,7 @@ export default class PassengerScreen extends Component {
       suppliersNearby,
       tappedLocation
     } = this.state;
-    console.log("orderdetail====>",this.state.orderDetail)
+    console.log("visibleModalPickup====>",this.state.visibleModalPickup)
     return (
       <View style={styles.container}>
       <MapScreen
@@ -704,6 +800,7 @@ export default class PassengerScreen extends Component {
             onChangeLocation={this._onChangePickup}
             closeModal={this._closeModalPickup}
             carpooling_id={orderDetail.carpooling_id}
+            _makeorder={this._makeorder}
             requiredAll={true}
           />
         </Dialog>

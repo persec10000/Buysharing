@@ -309,8 +309,8 @@ export default class DriverScreen extends Component {
         const carpooling_id = await this._createOrder(driver_id)
         if(carpooling_id) {
           this.setState({ orderDetail: {...response, carpooling_id} })
-          Alert.alert(__APP_NAME__, 'Created successful')
-          this._startSearching();
+          this.props.navigation.navigate('DriverSub', {driver_id: driver_id})
+          // this._startSearching();
         }
         else {
           Alert.alert(__APP_NAME__, 'Errors occured!')
@@ -414,6 +414,7 @@ export default class DriverScreen extends Component {
       suppliersNearby,
       tappedLocation
     } = this.state;
+    console.log("ordertaddddd====>",this.state.orderDetail)
     return (
       <View style={styles.container}>
       <MapScreen
@@ -603,7 +604,7 @@ export default class DriverScreen extends Component {
                 </TouchableOpacity>
               </View>
               <GradientButton
-                label="Make Order"
+                label="Create a trip"
                 _onPress={this._startMakingOrder}
               />
               <DatePicker

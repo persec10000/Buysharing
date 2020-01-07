@@ -282,7 +282,7 @@ export default class PassengerNearbyScreen extends Component {
   };
 
   _PassengerDetail = (item) => {
-    // this.props.navigation.navigate('PassengerDetail', {item: item})
+    this.props.navigation.navigate('Passenger', {item: item})
   }
 
   render() {

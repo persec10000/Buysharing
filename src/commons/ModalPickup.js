@@ -45,6 +45,10 @@ export default class ModalPickup extends Component {
     this.props.closeModal();
   };
 
+  _makeorder = () => {
+    this.props._makeorder()
+  }
+
   render() {
     return (
       <View
@@ -66,7 +70,7 @@ export default class ModalPickup extends Component {
           </Text>
         </View>
         <GradientPickupButton label="Pick Up" _onPress={this._accept} />
-        <GradientButton label="Make Order" _onPress={this._accept} />
+        <GradientButton label="Make Order" _onPress={this._makeorder} />
       </View>
     );
   }

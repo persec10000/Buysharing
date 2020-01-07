@@ -239,7 +239,7 @@ export default class APIClient {
         data: data,
         cancelToken: cancelToken,
       });
-      console.log('request url: ', rawResponse.request._url);
+      console.log('request url: ', rawResponse.data);
       const response = rawResponse.data;
       return {
         response,
