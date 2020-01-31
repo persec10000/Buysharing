@@ -4,11 +4,12 @@ import * as RNLocalize from 'react-native-localize';
 import MapView, {Marker} from 'react-native-maps';
 import LinearGradient from 'react-native-linear-gradient';
 import GradientHeader from '../commons/GradientHeader';
-import LanguageManager from '../manager/LanguageManager';
+// import LanguageManager from '../manager/LanguageManager';
 import UserManager from '../manager/UserManager';
 import MapScreen from '../commons/MapScreen';
+import i18n from '../translations/i18n'
 
-const languageManager = LanguageManager.getInstance();
+// const languageManager = LanguageManager.getInstance();
 const userManager = UserManager.getInstance();
 
 export default class MainShopingScreen extends Component {
@@ -43,15 +44,15 @@ export default class MainShopingScreen extends Component {
   }
 
   componentDidMount = async () => {
-    languageManager.addScreen(this);
+    // languageManager.addScreen(this);
   };
 
   componentWillUnmount() {
-    languageManager.removeScreen(this);
+    // languageManager.removeScreen(this);
   }
 
   handleLocalizationChange = () => {
-    languageManager.setI18nConfig();
+    // languageManager.setI18nConfig();
     this.forceUpdate();
   };
 
@@ -68,7 +69,7 @@ export default class MainShopingScreen extends Component {
                 style={styles.floatButtonBackground}
                 colors={['#E8222B', '#141414']}>
                 <Text style={styles.floatButtonLabel}>
-                  {languageManager.translateText('Supplier')}
+                  Supplier
                 </Text>
               </LinearGradient>
             </TouchableOpacity>
@@ -81,7 +82,7 @@ export default class MainShopingScreen extends Component {
                 style={styles.floatButtonBackground}
                 colors={['#E8222B', '#141414']}>
                 <Text style={styles.floatButtonLabel}>
-                  {languageManager.translateText('Buyer')}
+                  Buyer
                 </Text>
               </LinearGradient>
             </TouchableOpacity>

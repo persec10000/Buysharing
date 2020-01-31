@@ -1,0 +1,10 @@
+export const LOGIN_SUCCESS      = "LONIN_SUCCESS"
+export const SET_CURRENT_USER   = "SET_CURRENT_USER";
+export const LOGOUT             = "LOGOUT";
+export const REGISTER_SUCCESS   = 'REGISTER_SUCCESS';
+export const GET_ERRORS         = 'GET_ERRORS';
+export const INIT_SUCCESS       = 'INIT_SUCCESS';
+export const BUYER_SUCCESS      = 'BUYER_SUCCESS'
+export const SUPPLIER_SUCCESS   = 'SUPPLIER_SUCCESS'
+export const CREATENEWSHOPLIST  = 'CREATENEWSHOPLIST'
+export const INITSHOPLIST       = 'INITSHOPLIST'

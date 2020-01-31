@@ -19,7 +19,7 @@ import {
 } from 'react-native';
 import {omit} from 'lodash';
 import getFontFamily from './src/utils/getFontFamily';
-import LanguageManager from './src/manager/LanguageManager';
+// import LanguageManager from './src/manager/LanguageManager';
 import LocationManager from './src/manager/LocationManager';
 import UserManager from './src/manager/UserManager';
 import ItemLibraryManager from './src/manager/ItemLibraryManager';
@@ -33,8 +33,9 @@ import {PersistGate} from 'redux-persist/integration/react';
 import {persistStore, persistReducer} from 'redux-persist';
 import rootReducer from './src/redux/reducers/index';
 import AsyncStorage from '@react-native-community/async-storage';
+import i18n from './src/translations/i18n'
 
-LanguageManager.getInstance().initialize();
+// LanguageManager.getInstance().initialize();
 LocationManager.getInstance().initialize();
 ItemLibraryManager.getInstance().initialize();
 ShoppingListManager.getInstance().initialize();
@@ -97,7 +98,7 @@ class App extends React.Component {
     this.setState({rehydrated: true});
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this._persistor = persistStore(store, null, this._updateStore);
   }
 

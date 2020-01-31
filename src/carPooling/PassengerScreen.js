@@ -135,7 +135,6 @@ export default class PassengerScreen extends Component {
         let driver_id = params.item.driver_id
         console.log("params==>",driver_id)
         if (!_.isEmpty(params.item)) {
-          console.log("I am here")
           this.setState({visibleModalPickup: true})
           this.setState({ driver_id: driver_id})
         }
@@ -247,7 +246,6 @@ export default class PassengerScreen extends Component {
       response,
       error,
     } = await GeolocationUtils.getInstance().getCoordinates(text);
-    console.log(response, error);
     if (!_.isEmpty(response) && !_.isEmpty(response.results)) {
       deliveryToCoords.lat = response.results[0].geometry.location.lat;
       deliveryToCoords.lng = response.results[0].geometry.location.lng;
@@ -265,7 +263,6 @@ export default class PassengerScreen extends Component {
   };
 
   _onChangePickup = async text => {
-    console.log(text);
     const deliveryFromCoords = {
       lat: 0,
       lng: 0,
@@ -363,9 +360,7 @@ export default class PassengerScreen extends Component {
           path,
           data,
         );
-        // console.log("response",response2.response)
         this.setState({visibleModalPickup: false})
-        // this.setState({ orderDetail: {...response2, carpooling_id} })
         Alert.alert(__APP_NAME__, 'Created successful')
       }
     }
@@ -549,7 +544,6 @@ export default class PassengerScreen extends Component {
       suppliersNearby,
       tappedLocation
     } = this.state;
-    console.log("visibleModalPickup====>",this.state.visibleModalPickup)
     return (
       <View style={styles.container}>
       <MapScreen

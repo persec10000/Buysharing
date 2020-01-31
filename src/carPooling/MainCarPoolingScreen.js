@@ -3,9 +3,9 @@ import {StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import GradientHeader from '../commons/GradientHeader';
 import MapView, {Marker} from 'react-native-maps';
-import LanguageManager from '../manager/LanguageManager';
+// import LanguageManager from '../manager/LanguageManager';
 
-const languageManager = LanguageManager.getInstance();
+// const languageManager = LanguageManager.getInstance();
 
 class MainCarPoolingScreen extends Component {
   static navigationOptions = ({navigation, navigationOptions}) => {
@@ -33,15 +33,15 @@ class MainCarPoolingScreen extends Component {
   };
 
   componentDidMount() {
-    languageManager.addScreen(this);
+    // languageManager.addScreen(this);
   }
 
   componentWillUnmount() {
-    languageManager.removeScreen(this);
+    // languageManager.removeScreen(this);
   }
 
   handleLocalizationChange = () => {
-    languageManager.setI18nConfig();
+    // languageManager.setI18nConfig();
     this.forceUpdate();
   };
 
@@ -94,7 +94,8 @@ class MainCarPoolingScreen extends Component {
                 style={styles.floatButtonBackground}
                 colors={['#E8222B', '#141414']}>
                 <Text style={styles.floatButtonLabel}>
-                  {languageManager.translateText('Driver')}
+                  Driver
+                  {/* {languageManager.translateText('Driver')} */}
                 </Text>
               </LinearGradient>
             </TouchableOpacity>
@@ -107,7 +108,8 @@ class MainCarPoolingScreen extends Component {
                 style={styles.floatButtonBackground}
                 colors={['#E8222B', '#141414']}>
                 <Text style={styles.floatButtonLabel}>
-                  {languageManager.translateText('Passenger')}
+                  Passenger
+                  {/* {languageManager.translateText('Passenger')} */}
                 </Text>
               </LinearGradient>
             </TouchableOpacity>

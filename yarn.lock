@@ -3271,10 +3271,10 @@ http-signature@~1.2.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
-i18n-js@^3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/i18n-js/-/i18n-js-3.3.0.tgz#05512f7184b5117c087ab597be649720a834c068"
-  integrity sha512-+m8jh84IIWlFwEJgwrWCkeIwIES9ilJKBOj5qx8ZTLLmlPz7bjKnCdxf254wRf6M4pkQHtgXGT9r9lGk0e9aug==
+i18n-js@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/i18n-js/-/i18n-js-3.1.0.tgz#4ec474b2b7ba8175284a0003804c7bf713991919"
+  integrity sha512-xkpkBgf7anfmoRnJFdTqSQuv3phuP2DHEakWbNJUQMZxaLf146dcYWscOyN6wlG6R2WgS6AE7y664yiAaXXDwg==
 
 iconv-lite@0.4.24, iconv-lite@^0.4.17, iconv-lite@^0.4.24, iconv-lite@^0.4.4, iconv-lite@~0.4.13:
   version "0.4.24"
@@ -5696,6 +5696,11 @@ react-native-popup-dialog@^0.18.3:
     babel-plugin-flow-react-proptypes "^9.1.1"
     prop-types "^15.6.0"
     react-native-root-siblings "^3.2.1"
+
+react-native-popup-menu@^0.15.6:
+  version "0.15.6"
+  resolved "https://registry.yarnpkg.com/react-native-popup-menu/-/react-native-popup-menu-0.15.6.tgz#ebf885c289028e330dd66d887e685a8b0c2de970"
+  integrity sha512-ILFbQEofZQThVYAtVcOEgHJ+9wvn8992J+Oy/ByX83PoP88Meq3iw3pG1AwxMOoAPm/LjihtsDBqZ1lxjvosDg==
 
 react-native-raw-bottom-sheet@^2.0.5:
   version "2.0.5"

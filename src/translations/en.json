@@ -1,7 +1,136 @@
 {
-    "E-mail or mobile number": "E-mail or mobile number",
-    "Supplier": "Supplier",
-    "Buyer": "Buyer",
-    "Driver": "Driver",
-    "Passenger": "Passenger"
+    "Buysharing": "Buysharing",
+    "Auth": {
+        "E-mail or phone": "E-mail or Phone",
+        "password": "Password",
+        "forgot_pass": "Forgot password?",
+        "login": "Log In",
+        "signup": "Sign Up",
+        "login with": "Log in with",
+        "name": "Name",
+        "surname": "Surname",
+        "phone": "Phone",
+        "location": "Location/Adress",
+        "email": "E-mail",
+        "age": "Age",
+        "repeat_pass": "Repeat Password",
+        "agree_term_service": "I agree to the terms of use and conditions" 
+    },
+    "Common": {
+        "leave_comment": "Leave Comment",
+        "make_order": "Make Order",
+        "from": "From:",
+        "to": "To:",
+        "when": "When:",
+        "accept": "Accept",
+        "decline": "Decline",
+        "cancel": "Cancel",
+        "location": "Location",
+        "time_date": "Time/Date",
+        "radius": "Radius",
+        "search": "Search",
+        "offersNearby": "Offers Nearby",
+        "oderersNearby": "Orders Nearby",
+        "write": "Write",
+        "call": "Call",
+        "finish": "Finish",
+        "in_progress": "In progress"
+    },
+    "Shopping": {
+        "title": "Shopping",
+        "shopping_list": "Shopping list",
+        "shopping_cost": "Shopping cost:",
+        "delivery_cost": "Delivery cost:",
+        "Supplier": {
+            "title": "Supplier",
+            "delivery": "Delivery(km):",
+            "make_offer": "Make Offer",
+            "vier_order_datail": "View Order Details",
+            "delivery_": "Delivery:",
+            "order_detail": "Order_Details",
+            "take_order": "Take_Order",
+            "don't_forget": "Please don't forget to take the check"
+        },
+        "Buyer": {
+            "title": "Buyer",
+            "purchase": "purchase",
+            "view": "View",
+            "start_typing_name": "Start typing the name",
+            "open_item_library": "Open Item Library",
+            "price": "Price:",
+            "amount": "Amount:",
+            "total_cost": "Total Cost:",
+            "create_shopping_list": "Create Shopping List",
+            "item_library": "Item Library",
+            "new_item": "New Item",
+            "enter": "Enter",
+            "name": "Name",
+            "firm_manufacturer": "Firm-manufacturer",
+            "volume": "Volume",
+            "create_item": "Create Item",
+            "your_shopping_list": "Your shopping list:",
+            "include_shipping_cost": "include shipping cost:",
+            "goto_payment": "Go to Payment",
+            "delivery_from": "Delivery from(km):",
+            "your_order": "Your order:",
+            "accept_order": "accepted your order!",
+            "send_to_supplier": "Send to Supplier",
+            "go_shopping": "Go Shopping",
+            "total": "Total:"
+        }
+    },
+    "Carpooling": {
+        "title": "Carpooling",
+        "Driver": {
+            "title": "Driver",
+            "create_trip": "Create a trip",
+            "car": "Car:",
+            "color": "Color:",
+            "plate": "Plate:",
+            "price": "Price:",
+            "offer": "Offer"
+        },
+        "Passenger":{
+            "title": "Passenger",
+            "pickup": "Pick Up"
+        }
+    },
+    "Messages": {
+        "title": "Messages",
+        "your_message": "Your message..."
+    },
+    "Feedback":{
+        "title": "Feedback"
+    },
+    "History": {
+        "title": "History",
+        "choose_role": "Choose role"
+    },
+    "Payment": {
+        "title": "Payment",
+        "gold_card": "Gold Payment Card",
+        "add_card": "Add Card"
+    },
+    "Myactivity": {
+        "title": "My activity"
+    },
+    "Setting": {
+        "title": "Setting",
+        "language": "Language",
+        "currency": "Currency",
+        "currency_placeholder": "American Dollar",
+        "changename": "Change Name",
+        "changeaddress": "Change Address",
+        "changeemail": "Change E-mail",
+        "changephone": "Change phone",
+        "save": "Save",
+        "changepass": "Change password",
+        "lastpass": "Last password",
+        "newpass": "New password",
+        "repeatpass": "Repeat password",
+        "logout": "Log Out"
+    },
+    "Support": {
+        "title": "Support"
+    }           
 }

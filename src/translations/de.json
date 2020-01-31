@@ -1,7 +1,136 @@
 {
-    "E-mail or mobile number": "E-Mail oder Mobilnummer",
-    "Supplier": "Lieferant",
-    "Buyer": "Käufer",
-    "Driver": "Fahrer",
-    "Passenger": "Passagier"
+    "Buysharing": "Buysharing",
+    "Auth": {
+        "E-mail or phone": "E-Mail oder Mobilnummer ",
+        "password": "Passwort",
+        "forgot_pass": "Passwort vergessen?",
+        "login": "Anmelden",
+        "signup": "Konto erstellen",
+        "login with": "Anmelden mit",
+        "name": "Name",
+        "surname": "Vorname",
+        "phone": "Mobilnummer",
+        "location": "Adresse",
+        "email": "E-mail",
+        "age": "Alter",
+        "repeat_pass": "Passwort wiederholen",
+        "agree_term_service": "Ich stimme den Nutzungsbedingungen zu" 
+    },
+    "Common": {
+        "leave_comment": "Kommentar",
+        "make_order": "Suche starten",
+        "from": "Von:",
+        "to": "Nach:",
+        "when": "Wann:",
+        "accept": "Akzeptieren",
+        "decline": "Zurück",
+        "cancel": "Löschen",
+        "location": "Ort",
+        "time_date": "Datum/Uhrzeit",
+        "radius": "Radius",
+        "search": "Suche",
+        "offersNearby": "Fahrer in der Nähe",
+        "oderersNearby": "Bestellungen in der Nähe",
+        "write": "Schreiben",
+        "call": "Anrufen",
+        "finish": "Beenden",
+        "in_progress": "In Bearbeitung"
+    },
+    "Shopping": {
+        "title": "Einkaufen",
+        "shopping_list": "Einkaufsliste",
+        "shopping_cost": "Einkaufskosten:",
+        "delivery_cost": "Lieferkosten:",
+        "Supplier": {
+            "title": "Lieferant",
+            "delivery": "Delivery(km):",
+            "make_offer": "Make Offer",
+            "vier_order_datail": "View Order Details",
+            "delivery_": "Delivery:",
+            "order_detail": "Order_Details",
+            "take_order": "Take_Order",
+            "don't_forget": "Please don't forget to take the check"
+        },
+        "Buyer": {
+            "title": "Käufer",
+            "purchase": "Einkauf",
+            "view": "Einkaufswagen",
+            "start_typing_name": "Produkt/Name eintippen",
+            "open_item_library": "Produktgalerie öffnen",
+            "price": "Preis:",
+            "amount": "Summe:",
+            "total_cost": "Gesamtkosten:",
+            "create_shopping_list": "Gestalte eine Einkaufsliste",
+            "item_library": "Produktgalerie",
+            "new_item": " Neues Produkt",
+            "name": "Name",
+            "firm_manufacturer": "Hersteller",
+            "enter": "Eingeben",
+            "volume": "Menge",
+            "create_item": "Produkt erstellen",
+            "your_shopping_list": "Ihre Einkaufsliste:",
+            "include_shipping_cost": "Inklusive Versandkosten:",
+            "goto_payment": "Bezahlen",
+            "delivery_from": "Lieferung von(km):",
+            "your_order": "Ihre Bestellung:",
+            "accept_order": "hat deine Bestellung akzeptiert!",
+            "send_to_supplier": "Zum Lieferant schicken",
+            "go_shopping": "Einkaufen",
+            "total": "Ingesamt:"
+        }
+    },
+    "Carpooling": {
+        "title": "Fahrgemeinschaft ",
+        "Driver": {
+            "title": "Fahrer",
+            "create_trip": "Plane eine Fahrt",
+            "car": "Auto:",
+            "color": "Farbe:",
+            "plate": "Nummernschild:",
+            "price": "Preis:",
+            "offer": "Offerte"
+        },
+        "Passenger":{
+            "title": "Passagier",
+            "pickup": "Abholen"
+        }
+    },
+    "Messages": {
+        "title": "Nachrichten",
+        "your_message": "Deine Nachricht..."
+    },
+    "Feedback":{
+        "title": "Rückmeldung"
+    },
+    "History": {
+        "title": "Einkaufhistorie",
+        "choose_role": "Wähle eine Option aus"
+    },
+    "Payment": {
+        "title": "Bezahloptionen",
+        "gold_card": "Gold Payment Card",
+        "add_card": "Karte hinzufügen"
+    },
+    "Myactivity": {
+        "title": "Meine Aktivitäten"
+    },
+    "Setting": {
+        "title": "Einstellungen",
+        "language": "Sprache",
+        "currency": "Währung",
+        "currency_placeholder": "American Dollar",
+        "changename": "Name ändern",
+        "changeaddress": "Adresse ändern",
+        "changeemail": "E-Mail-Adresse ändern",
+        "changephone": "Ändern Handy Nummer",
+        "save": "Speichern",
+        "changepass": "Ändern Passwort",
+        "lastpass": "Letztes Passwort",
+        "newpass": "Neue Passwort",
+        "repeatpass": "Wiederhole Passwort",
+        "logout": "Abmelden"
+    },
+    "Support": {
+        "title": "Hilfe"
+    }   
 }
